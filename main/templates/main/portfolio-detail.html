@@ -46,9 +46,27 @@ Start Content
 </section>
 
 <section>
+  <div class="sectionSpaceSm" style="margin: -70px 0px 0px 0px;">
+    <div class="container">
+      <img src="{{object.image.url}}">
+    </div>
+  </div>
+</section>
+
+<section>
   <div class="sectionSpaceSm">
     <div class="container">
       {{object.body|safe}}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sectionSpaceSm">
+    <div class="container">
+      <div class="col-auto">
+        <a href="{{object.url}}" target="_blank" class="btn btnOutline">Check it out on GitHub!</a>
+      </div>
     </div>
   </div>
 </section>
