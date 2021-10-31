@@ -152,39 +152,7 @@ Start Content
         </div>
         {% endif %}
         {% endfor %}
-        
-      <!-- </div>
-      <div class="testimonialCol">
-        <h4 class="smText regular d-block">Testimonials</h4>
-        <div class="testimonialSlider">
-          <div class="swiper testimonialSwiper">
-            <div class="swiper-wrapper">
-              {% for t in testimonials %}
-              {% if t.is_active %}
-              <div class="swiper-slide">
-                <div class="testimonialCard">
-                  <div class="row align-items-center">
-                    <div class="col-sm-auto">
-                      <div class="tImgCol">
-                        <img src="{{t.thumbnail.url}}" alt="...">
-                      </div>
-                    </div>
-                    <div class="col-sm">
-                      <div class="tContentCol">
-                        <h4 class="xsTitle bold">{{t.name}} - {{t.role}}</h4>
-                        <p>{{t.quote}}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-              {% endfor %}
 
-            </div>
-            <div class="test-swiper-button-next swiper-button-next swiperBtnStyle"></div>
-            <div class="test-swiper-button-prev swiper-button-prev swiperBtnStyle"></div>
-          </div> -->
 
 
         </div>
@@ -232,37 +200,6 @@ Start Content
   </div>
 </section>
 
-<section>
-  <div class="sectionSpaceSm lightBg">
-    <div class="container">
-      <div class="row pb-3">
-        <div class="col">
-          <h4 class="smText regular">Recent posts</h4>
-        </div>
-        <div class="col-auto">
-          <a href="{% url 'main:blogs' %}" class="simpleLink">View all</a>
-        </div>
-      </div>
-      <div class="row g-3">
-      {% for b in blogs %}
-      {% if b.is_active %}
-        <div class="col-lg-6">
-          <div class="cardStyle1">
-            <h4 class="mdTitle cs1Title"><a href="{% url 'main:blog' slug=b.slug %}">{{b.name}}</a></h4>
-            <ul class="cardOptionCol">
-              <li>{{b.timestamp.date}}</li>
-              <li>{{b.author}}</li>
-            </ul>
-            <p>{{b.description}}</p>
-          </div>
-        </div>
-        {% endif %}
-        {% endfor %}
-
-      </div>
-    </div>
-  </div>
-</section>
 {% endblock %}
 <!-- ================================
 End Content
