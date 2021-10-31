@@ -32,8 +32,6 @@ class PortfolioAdmin(admin.ModelAdmin):
     list_display = ('id','name','is_active')
     readonly_fields = ('slug',)
 
-
-
 @admin.register(Certificate)
 class CertificateAdmin(admin.ModelAdmin):
     list_display = ('id','name')
