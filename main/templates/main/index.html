@@ -37,7 +37,7 @@ Start Content
       <div class="row g-4 g-md-3  align-items-center">
         <div class="col-md-auto order-md-last">
           <div class="bannerUserImg">
-            <img src="{{me.userprofile.avatar.url}}" alt="{{me.first_name|title}} {{me.last_name|title}} avatar">
+            <img src="{% static 'images/picture_me.jpg' %}" alt="{{me.first_name|title}} {{me.last_name|title}} avatar">
           </div>
           <br/>
           <div style="align-content: center; margin-left: 30px;">
@@ -51,7 +51,7 @@ Start Content
             <div class="bannerBtnCol">
               <div class="row">
                 <div class="col-auto">
-                  <a download href="{{me.userprofile.cv.url}}" class="btn btnPrimary">Download Resume</a>
+                  <a download href="{% static 'pdfs/Karim_Rhoualem_Resume_English.pdf' %}" class="btn btnPrimary">Download Resume</a>
                 </div>
                 <div class="col-auto">
                   <a href="{% url 'main:contact' %}" class="btn btnOutline">Contact Me!</a>
@@ -137,7 +137,9 @@ Start Content
               {% if sk.is_key_skill and not sk.is_framework and not sk.is_technology%}
                 <div class="keySkillCard">
                   <div class="ksIconCol">
-                    <img src="{{sk.image.url}}" alt="...">
+                    {% with 'images/'|add:sk.image_filename as image_static %}
+                      <img src="{% static image_static %}" alt="...">
+                    {% endwith %}
                   </div>
                   <span class="ksText">{{sk.name}}</span>
                 </div>
@@ -192,7 +194,9 @@ Start Content
           <div class="row g-4 align-items-center">
             <div class="col-md-auto">
               <div class="portfolioImgCol">
-                <a href="{% url 'main:portfolio' slug=p.slug %}"><img src="{{p.image.url}}" alt="..."></a>
+                {% with 'images/'|add:p.image_filename as image_static %}
+                    <a href="{% url 'main:portfolio' slug=p.slug %}"><img src="{% static image_static %}" alt="..."></a>
+                {% endwith %}
               </div>
             </div>
             <div class="col-md">
@@ -208,9 +212,6 @@ Start Content
         </div>
         {% endif %}
         {% endfor %}
-
-
-
         </div>
       </div>
     </div>
@@ -224,7 +225,6 @@ Start Content
         <div class="col">
           <h4 class="smText regular">Certificates</h4>
         </div>
-
       </div>
       <div class="sliderOuter">
         <div class="swiper certificatesSlider">
@@ -236,7 +236,9 @@ Start Content
                 <h4 class="mdTitle cs1Title">
                   <a href="javascript:void(0)">{{c.title}}</a>
                 </h4>
-                <a href="{{c.url}}" target="_blank"><img src="{{c.image.url}}" alt="..."></a>
+                {% with 'images/'|add:c.image_filename as image_static %}
+                  <a href="{{c.url}}" target="_blank"><img src="{% static image_static %}" alt="..."></a>
+                {% endwith %}
                 <ul class="cardOptionCol">
                   <li>{{c.date.date}}</li>
                   <li>{{c.name|title}}</li>
@@ -245,8 +247,7 @@ Start Content
               </div>
             </div>
             {% endif %}
-            {% endfor %}
-            
+            {% endfor %}   
           </div>
         </div>            
         <div class="cert-swiper-button-next swiper-button-next swiperBtnStyle"></div>

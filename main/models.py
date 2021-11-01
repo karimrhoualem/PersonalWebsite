@@ -15,6 +15,7 @@ class Skill(models.Model):
     is_key_skill = models.BooleanField(default=False)
     is_framework = models.BooleanField(default=False)
     is_technology = models.BooleanField(default=False)
+    image_filename = models.CharField(max_length=100, blank=True, null=True)
     
     def __str__(self):
         return self.name
@@ -102,6 +103,7 @@ class Portfolio(models.Model):
     url = models.URLField(blank=True, null=True)
     slug = models.SlugField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
+    image_filename = models.CharField(max_length=100, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -128,6 +130,7 @@ class Certificate(models.Model):
     is_active = models.BooleanField(default=True)
     image = models.ImageField(blank=True, null=True, upload_to="certificate")
     url = models.URLField(blank=True, null=True)
+    image_filename = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.name

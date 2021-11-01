@@ -48,7 +48,9 @@ Start Content
 <section>
   <div class="sectionSpaceSm" style="margin: -70px 0px 0px 0px;">
     <div class="container">
-      <img src="{{object.image.url}}">
+      {% with 'images/'|add:object.image_filename as image_static %}
+        <img src="{% static image_static %}">
+      {% endwith %}
     </div>
   </div>
 </section>
