@@ -9,6 +9,7 @@ from .models import (
 
 from django.views import generic
 from django.core.mail import send_mail
+from django.conf import settings
 
 from . forms import ContactForm
 
@@ -38,8 +39,10 @@ class ContactView(generic.FormView):
 		form.save()
 		messages.success(self.request, 'Thank you. We will be in touch soon.')
 		name = form.cleaned_data['name']
+		email = form.cleaned_data['email']
 		print(form.cleaned_data)
-		send_mail(f'Personal Webpage Email from {name}', form.cleaned_data['message'], form.cleaned_data['email'], ['karim.rhoualem@gmail.com'])
+		send_mail(subject=f'Personal Webpage Email from {name} ({email})', message=form.cleaned_data['message'], 
+				  from_email=form.cleaned_data['email'], recipient_list=[settings.RECIPIENT_ADDRESS])
 		return super().form_valid(form)
 
 
