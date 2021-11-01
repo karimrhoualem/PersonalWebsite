@@ -37,7 +37,7 @@ class ContactView(generic.FormView):
 	
 	def form_valid(self, form):
 		form.save()
-		messages.success(self.request, 'Thank you. We will be in touch soon.')
+		messages.success(self.request, 'Thank you! I will be in touch soon!')
 		name = form.cleaned_data['name']
 		email = form.cleaned_data['email']
 		print(form.cleaned_data)
